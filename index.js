@@ -13,7 +13,7 @@ module.exports = {
         if(support && support.PageModel) {
             if (!findPagesPromise || !data.cache) {
                 var filter = {
-                    root: data.root || 'primary',
+                    root: data.root || 'top',
                     status: 200,
                     useInNav: true
                 };
@@ -33,14 +33,12 @@ module.exports = {
 
             return {
                 pages: pages,
-                navWrapperClass: data.navWrapperClass || '',
                 navListClass: data.navListClass || '',
                 navListItemClass: data.navListItemClass || ''
             }
         });
     },
     defaultData: {
-        navWrapperClass: 'navbar',
         navListClass: 'nav',
         navListItemClass: ''
     }

@@ -1,11 +1,9 @@
-<nav class="{{data.navWrapperClass}}" >
-    <ul class="{{data.navListClass}}">
-        {{#each data.pages}}
-            {{#if this.active}}
-                <li class="{{data.navListItemClass}} active"><a href="{{this.url}}">{{this.name}}</a></li>
-            {{else}}
-                <li class="{{data.navListItemClass}}"><a href="{{this.url}}">{{this.name}}</a></li>
-            {{/if}}
-        {{/each}}
-    </ul>
-</nav>
+<ul class="{{data.navListClass}}">
+    {{#each data.pages}}
+        {{#if this.active}}
+            <li class="{{../../data.navListItemClass}} active"><a href="{{this.url}}">{{this.name}}</a></li>
+        {{else}}
+            <li class="{{../../data.navListItemClass}}"><a href="{{this.url}}">{{this.name}}</a></li>
+        {{/if}}
+    {{/each}}
+</ul>
