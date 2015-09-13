@@ -24,5 +24,12 @@
   },
   "dependencies": {
     "bluebird": "^2.9.34"
+  },
+  "pagespace" : {
+      "name" : "Navigation",
+      "defaultData" : {
+          "navListClass": "nav",
+          "navListItemClass": ""
+      }
   }
 }
