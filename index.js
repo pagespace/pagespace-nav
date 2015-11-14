@@ -8,37 +8,43 @@ module.exports = {
     reset: function() {
         findPagesPromise = null;
     },
-    process: function(data, opts) {
+    process: function(config, opts) {
         opts = opts ||{};
         var preview = opts.preview;
-        var PageModel = pagespace.getPageModel(preview);
 
+        var PageModel = pagespace.getPageModel(preview);
         if(PageModel) {
-            if (!findPagesPromise || !data.cache) {
+            if (!findPagesPromise || !config.cache) {
                 var filter = {
-                    root: data.root || 'top',
-                    status: 200,
+                    status: { $gte: 200, $lte: 302 },
                     useInNav: true
                 };
-                var query = PageModel.find(filter).sort({ order: 'asc'});
-                findPagesPromise = Promise.promisify(query.exec, query);
+                if(!config.root || config.root === 'top') {
+                    filter.root = 'top';
+                } else {
+                    filter.parent = config.root;
+                }
+                var findPagesPromise = PageModel.find(filter).sort({ order: 'asc'}).exec();
             }
         } else {
             findPagesPromise = function() {
                 return Promise.resolve([]);
             };
         }
-        return findPagesPromise().then(function(pages) {
-
-            pages.forEach(function(page) {
+        return findPagesPromise.then(function(pages) {
+            pages = pages.map(function(page) {
                 page.active = opts.reqUrl.indexOf(page.url) > -1;
+                return page;
             });
 
             return {
                 pages: pages,
-                navListClass: data.navListClass || '',
-                navListItemClass: data.navListItemClass || ''
+                navListClass: config.navListClass || '',
+                navListItemClass: config.navListItemClass || ''
             }
+        }).then(undefined, function(err) {
+            pagespace.logger.error(err);
+            return '<!-- Error resolving plugin -->';
         });
     }
 };

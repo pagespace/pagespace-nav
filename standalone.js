@@ -8,7 +8,7 @@ var part = require('./index');
 
 var app = express();
 
-var data = require('./stubs/data.json');
+var data = require('./stubs/config.json');
 
 app.use(favicon(__dirname + '/favicon.ico'));
 
@@ -17,7 +17,7 @@ app.set('views', './');
 app.engine('hbs', exphbs());
 app.set('view engine', 'hbs');
 
-app.use('/_parts/static/pagespace-nav/', express.static('static'));
+app.use('/_static/plugins/pagespace-nav/', express.static('static'));
 app.use(bodyParser.json());
 
 app.get('/', function (req, res) {

@@ -24,7 +24,7 @@
   },
   "pagespace" : {
       "name" : "Navigation",
-      "defaultData" : {
+      "config" : {
           "navListClass": "nav",
           "navListItemClass": ""
       }
