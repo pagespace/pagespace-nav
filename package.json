@@ -22,11 +22,18 @@
   "dependencies": {
     "bluebird": "^2.9.34"
   },
+  "keywords" : [ "pagespace-plugin" ],
   "pagespace" : {
-      "name" : "Navigation",
-      "config" : {
-          "navListClass": "nav",
-          "navListItemClass": ""
-      }
+      "schema" : [{
+          "name" : "navListClass",
+          "default" : "nav",
+          "type" : "string",
+          "title" : "Root CSS Class"
+      },{
+          "name" : "navListItemClass",
+          "default" : "",
+          "type" : "string",
+          "title" : "Nav item CSS Class"
+      }]
   }
 }
