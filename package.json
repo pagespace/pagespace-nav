@@ -24,16 +24,30 @@
   },
   "keywords" : [ "pagespace-plugin" ],
   "pagespace" : {
-      "schema" : [{
-          "name" : "navListClass",
-          "default" : "nav",
-          "type" : "string",
-          "title" : "Root CSS Class"
-      },{
-          "name" : "navListItemClass",
-          "default" : "",
-          "type" : "string",
-          "title" : "Nav item CSS Class"
-      }]
+      "schema" : {
+          "type" : "object",
+          "title" : "Navigation",
+          "properties" : {
+              "root" : {
+                  "title" : "Navigaton root",
+                  "type" : "string",
+                  "default" : "top",
+                  "description" : "Use a page id or 'top'. Children of this page will be displayed"
+              },
+              "navListClass" : {
+                  "title" : "Root CSS class",
+                  "type" : "string",
+                  "default" : "nav",
+                  "description" : "A CSS class to add to the wrapping UL element of the navigation items"
+              },
+              "navListItemClass" : {
+                  "title" : "Item CSS class",
+                  "type" : "string",
+                  "description": "A CSS class to give each LI item containing a navigation item"
+              }
+          },
+          "required" : [ " root" ],
+          "form" : [ "root", "navListClass", "navListItemClass" ]
+      }
   }
 }

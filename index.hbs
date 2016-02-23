@@ -1,9 +1,9 @@
 <ul class="{{navListClass}}">
     {{#each pages}}
         {{#if this.active}}
-            <li class="{{../../navListItemClass}} active"><a href="{{this.url}}">{{this.name}}</a></li>
+            <li class="{{../navListItemClass}} active"><a href="{{this.url}}">{{this.name}}</a></li>
         {{else}}
-            <li class="{{../../navListItemClass}}"><a href="{{this.url}}">{{this.name}}</a></li>
+            <li class="{{../navListItemClass}}"><a href="{{this.url}}">{{this.name}}</a></li>
         {{/if}}
     {{/each}}
 </ul>
