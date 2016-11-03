@@ -1,6 +1,6 @@
 {
   "name": "pagespace-nav",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Navigation plugin for Pagespace",
   "main": "index.js",
   "repository": {
